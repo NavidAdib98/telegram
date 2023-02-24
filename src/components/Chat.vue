@@ -57,6 +57,7 @@ export default {
         });
         this.msg = "";
       }
+      this.$refs.input.focus();
     },
     typing() {
       if (this.msg) {
