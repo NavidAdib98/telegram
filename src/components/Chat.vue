@@ -19,6 +19,7 @@
       <br />
     </div>
     <div class="last-item">
+      <p v-if="typing()">typing...</p>
       <input
         ref="input"
         class="input"
@@ -55,6 +56,13 @@ export default {
           position: "r",
         });
         this.msg = "";
+      }
+    },
+    typing() {
+      if (this.msg) {
+        return true;
+      } else {
+        return false;
       }
     },
     removeText(id) {
@@ -125,8 +133,15 @@ export default {
 }
 
 .last-item {
+  position: relative;
   display: flex;
   justify-content: space-between;
+}
+.last-item p {
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+  color: #fff;
 }
 
 .input {
