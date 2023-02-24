@@ -93,7 +93,7 @@ export default {
     });
     this.messages.push({
       id: this.id++,
-      text: "how about you ???",
+      text: "how can I help you ???",
       position: "l",
     });
   },
