@@ -1,21 +1,21 @@
 <template>
   <div class="container">
     <div>
-      <div
-        class="signle-user"
-        v-for="user in users"
-        :key="user.id"
-        @click="showChat(user.id)"
-      >
-        <img
-          class="chat_img"
-          src="./../../public/images/profile_image_list.jpeg"
-          v-bind:alt="'pic'"
-        />
-        <div>
-          <h3>{{ user.name }}</h3>
-          <h6>{{ user.phone }}</h6>
+      <div class="cart" v-for="user in users" :key="user.id">
+        <div class="signle-user" @click="showChat(user.id)">
+          <img
+            class="chat_img"
+            src="./../../public/images/profile_image_list.jpeg"
+            v-bind:alt="'pic'"
+          />
+          <div>
+            <h3>{{ user.name }}</h3>
+            <h6>{{ user.phone }}</h6>
+          </div>
         </div>
+        <p class="remove" @click="removeChatHistory(user.id)">
+          Delete chat history
+        </p>
       </div>
     </div>
     <Chat class="chat" v-if="chatDisplay" :user="getUser(id)" />
@@ -46,7 +46,7 @@ export default {
       this.chatDisplay = false;
       setTimeout(
         () => (this.users = this.users.filter((u) => u.id !== id)),
-        "150"
+        "100"
       );
     },
   },
@@ -68,13 +68,17 @@ export default {
   max-width: 100px;
   border-radius: 50%;
 }
-.signle-user {
+.cart {
   width: 500px;
   background-color: rgb(109, 151, 155);
-  display: flex;
-  border: 1px solid rgb(60, 93, 96);
   border-radius: 5px;
   margin-right: 20px;
+  border: 1px solid rgb(60, 93, 96);
+  position: relative;
+}
+
+.signle-user {
+  display: flex;
 }
 .signle-user:hover {
   background-color: rgb(164, 186, 188);
@@ -84,5 +88,23 @@ export default {
 .signle-user div {
   flex-direction: column;
   padding: 5px;
+}
+
+.remove {
+  cursor: pointer;
+  background-color: rgb(22, 92, 98);
+  color: #fff;
+  width: fit-content;
+  border-radius: 5px;
+  display: none;
+  padding: 2px;
+  font-size: 0.5rem;
+}
+.cart:hover > .remove {
+  display: inline;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  z-index: 2;
 }
 </style>
