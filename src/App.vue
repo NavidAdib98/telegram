@@ -1,15 +1,17 @@
 <template>
-  <h1>App</h1>
-  <MyProfile />
-  <Chat />
+  <div class="container">
+    <div class="row">
+      <img />
+    </div>
+  </div>
+  <Chats />
 </template>
 
 <script>
-import MyProfile from "./components/MyProfile.vue";
-import Chat from "./components/Chat.vue";
+import Chats from "./components/Chats.vue";
 export default {
   name: "App",
-  components: { MyProfile, Chat },
+  components: { Chats },
 };
 </script>
 
