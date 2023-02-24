@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div>
+    <div style="overflow-y: scroll; height: 90dvh">
       <div class="cart" v-for="user in users" :key="user.id">
         <div class="signle-user" @click="showChat(user.id)">
           <img
@@ -103,7 +103,7 @@ export default {
 .cart:hover > .remove {
   display: inline;
   position: absolute;
-  right: -5px;
+  right: 5px;
   top: -5px;
   z-index: 2;
 }
