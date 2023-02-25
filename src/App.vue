@@ -28,5 +28,7 @@ body {
 }
 .content {
   margin-top: 75px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 </style>
