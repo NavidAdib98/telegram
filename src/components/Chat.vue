@@ -148,6 +148,7 @@ export default {
 }
 
 .container {
+  box-shadow: 10px 10px 5px #aaaaaa;
   display: flex;
   flex-direction: column;
   border-radius: 10px;

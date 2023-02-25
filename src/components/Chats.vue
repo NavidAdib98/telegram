@@ -5,7 +5,7 @@
       <div></div>
       <div></div>
     </div>
-
+    <h2 v-if="!users.length">Loading ...</h2>
     <div
       v-if="chatListDisplay"
       class="chat-list"
@@ -120,6 +120,7 @@ export default {
   border-radius: 50%;
 }
 .cart {
+  box-shadow: 10px 10px 5px #aaaaaa;
   max-width: 500px;
   background-color: rgb(109, 151, 155);
   border-radius: 5px;
