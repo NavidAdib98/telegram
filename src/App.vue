@@ -27,7 +27,7 @@ body {
   margin: 0px;
 }
 .content {
-  margin-top: 75px;
+  margin-top: 100px;
   margin-left: 3px;
   margin-right: 3px;
 }

@@ -21,7 +21,7 @@ export default {
   background-color: rgb(139, 157, 168);
   list-style-type: none;
   width: 100%;
-  margin: 5px 0px;
+  margin: 0px 0px 90px 0px;
   position: fixed;
   z-index: 10;
   top: 0px;

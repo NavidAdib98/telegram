@@ -1,6 +1,15 @@
 <template>
   <div class="container">
-    <div class="chat-list" style="overflow-y: scroll; height: 90dvh">
+    <div class="hamberger" @click="chatListDisplay = !chatListDisplay">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div
+      v-if="chatListDisplay"
+      class="chat-list"
+      style="overflow-y: scroll; height: 90dvh"
+    >
       <div class="cart" v-for="user in users" :key="user.id">
         <div class="signle-user" @click="showChat(user.id)">
           <img
@@ -30,13 +39,18 @@ export default {
     return {
       users: [],
       chatDisplay: false,
+      chatListDisplay: true,
       id: null,
+      windowWidth: window.innerWidth,
     };
   },
   methods: {
     showChat(id) {
       this.id = id;
       this.chatDisplay = false;
+      if (this.windowWidth < 768) {
+        this.chatListDisplay = false;
+      }
       setTimeout(() => (this.chatDisplay = true), "100");
     },
     getUser(id) {
@@ -49,27 +63,54 @@ export default {
         "100"
       );
     },
+    onResize() {
+      this.windowWidth = window.innerWidth;
+    },
   },
   mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((json) => (this.users = json));
   },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.onResize);
+  },
+
   components: { Chat },
 };
 </script>
 
 <style scoped>
+.hamberger {
+  padding: 3px;
+  position: absolute;
+  top: -40px;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  z-index: 4;
+}
+.hamberger div {
+  width: 2rem;
+  height: 0.5rem;
+  margin: 2px;
+  background: #393a3b;
+  border-radius: 5px;
+}
 .container {
   display: flex;
   align-items: flex-start;
+  position: relative;
 }
 .chat_img {
   max-width: 100px;
   border-radius: 50%;
 }
 .cart {
-  width: 500px;
+  max-width: 500px;
   background-color: rgb(109, 151, 155);
   border-radius: 5px;
   margin-right: 20px;
@@ -108,11 +149,9 @@ export default {
   z-index: 2;
 }
 
-@media only screen and (max-width: 600px) {
-  .chat_img {
-    max-width: 30px;
-    max-height: 30px;
-    border-radius: 50%;
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
   }
 }
 </style>
