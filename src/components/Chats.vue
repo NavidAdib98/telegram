@@ -5,6 +5,7 @@
       <div></div>
       <div></div>
     </div>
+
     <div
       v-if="chatListDisplay"
       class="chat-list"
@@ -27,7 +28,12 @@
         </p>
       </div>
     </div>
-    <Chat class="chat" v-if="chatDisplay" :user="getUser(id)" />
+    <Chat
+      class="chat"
+      v-if="chatDisplay"
+      :user="getUser(id)"
+      :close="closeChat"
+    />
   </div>
 </template>
 
@@ -45,6 +51,9 @@ export default {
     };
   },
   methods: {
+    closeChat() {
+      this.chatDisplay = false;
+    },
     showChat(id) {
       this.id = id;
       this.chatDisplay = false;
@@ -100,6 +109,7 @@ export default {
   background: #393a3b;
   border-radius: 5px;
 }
+
 .container {
   display: flex;
   align-items: flex-start;

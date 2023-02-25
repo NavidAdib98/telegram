@@ -1,6 +1,7 @@
 <template>
   <br />
   <div class="container">
+    <h1 @click="close()" class="close">x</h1>
     <div class="chat-box">
       <div class="one-chat" v-for="item in messages" :key="item.id">
         <img
@@ -42,6 +43,7 @@ export default {
   name: "ChatPage",
   data() {
     return {
+      off: false,
       msg: "",
       id: 0,
       messages: [],
@@ -50,6 +52,7 @@ export default {
   },
   props: {
     user: Object,
+    close: Function,
   },
   methods: {
     inputHandler($event) {
@@ -184,5 +187,11 @@ export default {
   background-color: rgb(1 28 38);
   color: #edb0b0;
   display: none;
+}
+.close {
+  color: #393a3b;
+  padding: 2px;
+  margin: 0;
+  cursor: pointer;
 }
 </style>
