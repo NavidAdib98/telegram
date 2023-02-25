@@ -104,7 +104,7 @@ export default {
 <style scoped>
 .chat-box {
   overflow-y: scroll;
-  height: 90dvh;
+  height: 80dvh;
 }
 
 .one-chat {

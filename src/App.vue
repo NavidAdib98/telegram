@@ -1,6 +1,6 @@
 <template>
   <NavbarComp />
-  <router-view />
+  <router-view class="content" />
 </template>
 
 <script>
@@ -22,5 +22,11 @@ export default {
 } */
 #app {
   font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  margin: 0px;
+}
+.content {
+  margin-top: 75px;
 }
 </style>

@@ -22,6 +22,9 @@ export default {
   list-style-type: none;
   width: 100%;
   margin: 5px 0px;
+  position: fixed;
+  z-index: 10;
+  top: 0px;
 }
 li {
   margin: 15px 10px;
