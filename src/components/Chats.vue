@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div style="overflow-y: scroll; height: 90dvh">
+    <div class="chat-list" style="overflow-y: scroll; height: 90dvh">
       <div class="cart" v-for="user in users" :key="user.id">
         <div class="signle-user" @click="showChat(user.id)">
           <img
@@ -106,5 +106,11 @@ export default {
   right: 5px;
   top: -5px;
   z-index: 2;
+}
+
+@media only screen and (max-width: 600px) {
+  .chat-list {
+    display: none;
+  }
 }
 </style>

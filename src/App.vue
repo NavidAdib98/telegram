@@ -1,17 +1,13 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <img />
-    </div>
-  </div>
-  <Chats />
+  <NavbarComp />
+  <router-view />
 </template>
 
 <script>
-import Chats from "./components/Chats.vue";
+import NavbarComp from "./components/NavbarComp.vue";
 export default {
   name: "App",
-  components: { Chats },
+  components: { NavbarComp },
 };
 </script>
 
