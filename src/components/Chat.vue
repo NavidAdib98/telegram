@@ -19,13 +19,16 @@
       <br />
     </div>
     <div class="last-item">
-      <p v-if="typing()">typing...</p>
+      <p style="color: red" v-if="maxType()">too long</p>
+      <p v-else-if="typing()">typing...</p>
+
       <input
         ref="input"
         class="input"
         type="text"
         placeholder="Message"
-        v-model="msg"
+        :value="msg"
+        @input="inputHandler"
       />
       <button class="button" @click="addData">
         <img class="send-img" src="./../../public/images/send.png" alt="send" />
@@ -42,12 +45,20 @@ export default {
       msg: "",
       id: 0,
       messages: [],
+      tooLong: 30,
     };
   },
   props: {
     user: Object,
   },
   methods: {
+    inputHandler($event) {
+      const text = $event.target.value;
+      if (text.length < this.tooLong + 1) {
+        this.msg = text;
+      }
+      this.$forceUpdate();
+    },
     addData() {
       if (this.msg) {
         this.messages.push({
@@ -61,6 +72,13 @@ export default {
     },
     typing() {
       if (this.msg) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    maxType() {
+      if (this.msg.length > this.tooLong - 1) {
         return true;
       } else {
         return false;
@@ -113,6 +131,7 @@ export default {
   background-color: rgb(1 28 38);
   margin: 5px;
   width: fit-content;
+  max-width: 500px;
   border-radius: 5px;
 }
 
@@ -138,6 +157,7 @@ export default {
   display: flex;
   justify-content: space-between;
 }
+
 .last-item p {
   position: absolute;
   bottom: 30px;
@@ -162,7 +182,7 @@ export default {
 
 .remove {
   background-color: rgb(1 28 38);
-  color: #f4d0d0;
+  color: #edb0b0;
   display: none;
 }
 </style>

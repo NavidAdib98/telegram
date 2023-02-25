@@ -109,8 +109,10 @@ export default {
 }
 
 @media only screen and (max-width: 600px) {
-  .chat-list {
-    display: none;
+  .chat_img {
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 50%;
   }
 }
 </style>
