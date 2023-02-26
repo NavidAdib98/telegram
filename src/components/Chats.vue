@@ -28,12 +28,9 @@
         </p>
       </div>
     </div>
-    <Chat
-      class="chat"
-      v-if="chatDisplay"
-      :user="getUser(id)"
-      :close="closeChat"
-    />
+    <div class="chat">
+      <Chat v-if="chatDisplay" :user="getUser(id)" :close="closeChat" />
+    </div>
   </div>
 </template>
 
